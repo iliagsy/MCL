@@ -5,6 +5,7 @@ from datetime import *
 
 BASE_DIR = '/Users/gaoshiyu/desktop/LB/Datasets'
 BASE_DIR1 = '/Volumes/GSY_SS/LB/'
+BASE_DIR_MCL = '/Users/gaoshiyu/desktop/LB/MCL'
 
 SPECIES = ['fly', 'worm', 'human']
 SPECIES_REL = ['worm', 'fly', 'human']
@@ -76,3 +77,7 @@ def REL_MAT(t):
     except:
         sp1,sp2 = sp2,sp1
         return load(REL_MAT_FILE(sp1, sp2)+'.npz')['arr'].T
+
+def GRAPH_ABC(sp):
+    assert sp in SPECIES
+    return BASE_DIR_MCL + '/abcgraph_{}.abc'.format(sp)
