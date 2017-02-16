@@ -80,4 +80,4 @@ def REL_MAT(t):
 
 def GRAPH_ABC(sp):
     assert sp in SPECIES
-    return BASE_DIR_MCL + '/abcgraph_{}.abc'.format(sp)
+    return BASE_DIR_MCL + '/graph_{}.abc'.format(sp)

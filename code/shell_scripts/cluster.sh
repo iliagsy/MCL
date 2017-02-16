@@ -1,18 +1,18 @@
 for fn in graph_*.abc
 do
   pref=${fn%*.abc}
-  ntfn=${pref}.mci  # native file name
-  tbfn=${pref}.tab
-  dppref=dump.${pref}
+  ntfn=mid/${pref}.mci  # native file name
+  tbfn=mid/${pref}.tab
+  dppref=out/dump.${pref}
   mcxload -abc $fn --stream-mirror -write-tab $tbfn -o $ntfn
 
-  mcl $ntfn -I 1.4
-  mcl $ntfn -I 2
-  mcl $ntfn -I 4
+  mcl $ntfn -I 1.4 -o out/out.$pref.I14
+  mcl $ntfn -I 2 -o out/out.$pref.I20
+  mcl $ntfn -I 4 -o out/out.$pref.I40
 
-  mcxdump -icl out.$ntfn.I14 -tabr $tbfn -o ${dppref}.I14
-  mcxdump -icl out.$ntfn.I20 -tabr $tbfn -o ${dppref}.I20
-  mcxdump -icl out.$ntfn.I40 -tabr $tbfn -o ${dppref}.I40
+  mcxdump -icl out/out.$pref.I14 -tabr $tbfn -o ${dppref}.I14
+  mcxdump -icl out/out.$pref.I20 -tabr $tbfn -o ${dppref}.I20
+  mcxdump -icl out/out.$pref.I40 -tabr $tbfn -o ${dppref}.I40
 done
 
 
